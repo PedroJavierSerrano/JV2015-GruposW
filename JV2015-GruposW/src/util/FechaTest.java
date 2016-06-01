@@ -2,48 +2,95 @@ package util;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-public class FechaTest {
+import modelo.Usuario;
 
+/** Realiza un test sobre la clase Fecha del modelo.
+ * 
+ * 
+ * @author Pedro Javier Serrano Balsalobre
+ * 31/05/2016
+ */
+
+public class FechaTest {
+	 private Fecha fecha1;
+	 private Fecha fecha2;
+	 private Fecha fecha3;
+	 
+	 private static Calendar calendario;
+	
+	 @Before
+		public void crearObjetosPrueba(){
+			 fecha1 = new Fecha();
+			 fecha2 = new Fecha("03/06/2016");
+			 fecha3 = new Fecha(fecha2);
+		}
+		
+		@After 
+		public void borrarObjetosPrueba(){
+			fecha1 = null;
+			fecha2 = null;
+			fecha3 = null;
+			}
+	 
+	
+	 
 	@Test
 	public void testFechaIntIntInt() {
-		fail("Not yet implemented");
+		assertTrue(fecha2 != null);
 	}
 
 	@Test
 	public void testFecha() {
-		fail("Not yet implemented");
+		assertTrue(fecha2 != null);
 	}
 
 	@Test
 	public void testFechaFecha() {
-		fail("Not yet implemented");
+		assertTrue(fecha1 != null);
 	}
 
 	@Test
 	public void testGetAño() {
-		fail("Not yet implemented");
+		assertTrue(fecha3 != null);
 	}
 
 	@Test
 	public void testGetMes() {
-		fail("Not yet implemented");
+		assertTrue(fecha2 != null);
 	}
 
 	@Test
 	public void testGetDia() {
-		fail("Not yet implemented");
+		assertTrue(fecha2 != null);
 	}
 
 	@Test
 	public void testSetAño() {
-		fail("Not yet implemented");
+		Año año = new Año();
+		año.setAño("2016");
+		fecha2.setAño(año);
+		assertequals(fecha2.getAño(), año);
+	}
+
+	private void assertequals(int año, Año año2) {
+		
 	}
 
 	@Test
 	public void testSetMes() {
-		fail("Not yet implemented");
+		Mes mes = new Mes();
+		mes.setMes("05");
+		fecha2.setMes(mes);
+		assertequals(fecha2.getMes(), mes);
+	}
+
+	private void assertequals(int mes, Mes mes2) {
+		
 	}
 
 	@Test
@@ -52,158 +99,97 @@ public class FechaTest {
 	}
 
 	@Test
-	public void testDifSegundos() {
-		fail("Not yet implemented");
+	public long testDifSegundos() {
+		return ((calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / 1000);
 	}
 
 	@Test
-	public void testDifMinutos() {
-		fail("Not yet implemented");
+	public long testDifMinutos() {
+		return (long)((calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) /60*1000);
 	}
 
 	@Test
-	public void testDifHoras() {
-		fail("Not yet implemented");
+	public long testDifHoras() {
+		return (long) (calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / (60*60*1000);
 	}
 
 	@Test
-	public void testDifDias() {
-		fail("Not yet implemented");
+	public int testDifDias() {
+		return (int)(calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / (24*60*60*1000);
 	}
 
 	@Test
-	public void testDifSemanas() {
-		fail("Not yet implemented");
+	public int testDifSemanas() {
+		return (int) (calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / (7*60*60*1000);
 	}
 
 	@Test
-	public void testDifMeses() {
-		fail("Not yet implemented");
+	public int testDifMeses() {
+		return (int) (calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / (30*60*60*1000);
 	}
 
 	@Test
-	public void testDifAños() {
-		fail("Not yet implemented");
+	public int testDifAños() {
+		return (int) (calendario.getTimeInMillis() 
+				- FechaTest.calendario.getTimeInMillis()) / (365*60*60*1000);
 	}
 
 	@Test
 	public void testAddSegundos() {
-		fail("Not yet implemented");
+		int segundos = 10;
+		calendario.add(Calendar.SECOND, segundos);
 	}
 
 	@Test
 	public void testAddMinutos() {
-		fail("Not yet implemented");
+		int minutos = 5;
+		calendario.add(Calendar.MINUTE, minutos);
 	}
 
 	@Test
 	public void testAddHoras() {
-		fail("Not yet implemented");
+		int horas = 1;
+		calendario.add(Calendar.HOUR, horas);
 	}
 
 	@Test
 	public void testAddDias() {
-		fail("Not yet implemented");
+		int dias = 1;
+		calendario.add(Calendar.DAY_OF_MONTH, dias);
 	}
 
 	@Test
 	public void testAddSemanas() {
-		fail("Not yet implemented");
+		int semanas = 2;
+		calendario.add(Calendar.WEEK_OF_MONTH, semanas);
 	}
 
 	@Test
 	public void testAddMeses() {
-		fail("Not yet implemented");
+		int meses = 1;
+		calendario.add(Calendar.MONTH,meses);
 	}
 
 	@Test
 	public void testAddAños() {
-		fail("Not yet implemented");
+		int años = 1;
+		calendario.add(Calendar.YEAR,años);
 	}
+
+	
 
 	@Test
-	public void testToDate() {
-		fail("Not yet implemented");
+	public int testCompareTo() {
+		
+		return calendario.compareTo(FechaTest.calendario);
 	}
-
-	@Test
-	public void testCompareTo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEqualsObject1() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone1() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString1() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
+	
 }
+	
+
